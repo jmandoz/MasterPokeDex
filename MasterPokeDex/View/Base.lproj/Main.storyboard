@@ -26,7 +26,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="4wy-1f-GZ1" userLabel="Background">
-                                <rect key="frame" x="107" y="156" width="200.00000000000011" height="200"/>
+                                <rect key="frame" x="107" y="156" width="200" height="200"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="4wy-1f-GZ1" secondAttribute="height" multiplier="1:1" id="OME-fj-s9E"/>
                                     <constraint firstAttribute="height" constant="200" id="ver-sq-kzg"/>
