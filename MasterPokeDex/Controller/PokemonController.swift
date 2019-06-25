@@ -6,7 +6,7 @@
 //  Copyright © 2019 Jason Mandozzi. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class PokemonController {
     //Singelton
@@ -22,7 +22,7 @@ class PokemonController {
         let pokemonPathComponentURL = baseURL?.appendingPathComponent("pokemon")
         
         //Construct the final URL - adding on the final path component
-        guard let finalURL = pokemonPathComponentURL?.appendingPathComponent(searchTerm) else {return}
+        guard let finalURL = pokemonPathComponentURL?.appendingPathComponent(searchTerm.lowercased()) else {return}
         print(finalURL)
         
         
@@ -46,5 +46,21 @@ class PokemonController {
             }
         } .resume()
         
+    }
+    
+    func fetchPokemonImageWith(pokemon: Pokemon, completion: @escaping (UIImage?) -> Void) {
+        //since the image is a URL, you access the struct in your model to get the image URL
+        let imageURL = pokemon.sprites.image
+        
+        URLSession.shared.dataTask(with: imageURL) { (data, _, error) in
+            if let error = error {
+                print("There was an error: \(error.localizedDescription)")
+            }
+            
+            if let data = data {
+                guard let pokemonImage = UIImage(data: data) else {return}
+                completion(pokemonImage)
+            }
+        }.resume()
     }
 }
